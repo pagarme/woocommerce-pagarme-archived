@@ -6,10 +6,6 @@
   "pluginsFile": "./tests/e2e/plugins/index.js",
   "supportFile": "./tests/e2e/support/index.js",
   "videosFolder": "./tests/e2e/videos",
-  "testFiles": "**/*_card.spec.js",
-  "baseUrl": "http://woopagarme",
-  "env": {
-    "wp_user": "pagarme",
-    "wp_pass": "wordpress"
-  }
+  "testFiles": "**/*.spec.js",
+  "baseUrl": "http://woopagarme"
 }
