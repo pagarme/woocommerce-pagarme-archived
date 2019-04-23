@@ -108,7 +108,7 @@ Cypress.Commands.add('selectBankingTicket', () => {
     .click()
 })
 
-Cypress.Commands.add('fillPagarMeCheckoutCreditCardForm', (installments) => {
+Cypress.Commands.add('fillPagarMeCheckoutCreditCardForm', (installments, cvv = checkoutData.card_cvv) => {
   cy.wait(2000)
 
   cy.pagarmeCheckoutCreditCardForm().as('pagarmeModal')
@@ -127,7 +127,7 @@ Cypress.Commands.add('fillPagarMeCheckoutCreditCardForm', (installments) => {
 
   cy.get('@pagarmeModal')
     .find('#pagarme-modal-box-credit-card-cvv')
-    .type(checkoutData.card_cvv)
+    .type(cvv)
 
   cy.get('@pagarmeModal')
     .find('#pagarme-modal-box-installments')
