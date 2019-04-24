@@ -83,50 +83,52 @@ class WC_Pagarme_Credit_Card_Gateway extends WC_Payment_Gateway {
 	 */
 	public function init_form_fields() {
 		$this->form_fields = array(
-			'enabled' => array(
+			'enabled'              => array(
 				'title'   => __( 'Enable/Disable', 'woocommerce-pagarme' ),
 				'type'    => 'checkbox',
 				'label'   => __( 'Enable Pagar.me Credit Card', 'woocommerce-pagarme' ),
 				'default' => 'no',
 			),
-			'title' => array(
+			'title'                => array(
 				'title'       => __( 'Title', 'woocommerce-pagarme' ),
 				'type'        => 'text',
 				'description' => __( 'This controls the title which the user sees during checkout.', 'woocommerce-pagarme' ),
 				'desc_tip'    => true,
 				'default'     => __( 'Credit Card', 'woocommerce-pagarme' ),
 			),
-			'description' => array(
+			'description'          => array(
 				'title'       => __( 'Description', 'woocommerce-pagarme' ),
 				'type'        => 'textarea',
 				'description' => __( 'This controls the description which the user sees during checkout.', 'woocommerce-pagarme' ),
 				'desc_tip'    => true,
 				'default'     => __( 'Pay with Credit Card', 'woocommerce-pagarme' ),
 			),
-			'integration' => array(
+			'integration'          => array(
 				'title'       => __( 'Integration Settings', 'woocommerce-pagarme' ),
 				'type'        => 'title',
 				'description' => '',
 			),
-			'api_key' => array(
+			'api_key'              => array(
 				'title'             => __( 'Pagar.me API Key', 'woocommerce-pagarme' ),
 				'type'              => 'text',
+				/* translators: %1$s is replaced with API key Pagar.me */
 				'description'       => sprintf( __( 'Please enter your Pagar.me API Key. This is needed to process the payment and notifications. Is possible get your API Key in %s.', 'woocommerce-pagarme' ), '<a href="https://dashboard.pagar.me/">' . __( 'Pagar.me Dashboard > My Account page', 'woocommerce-pagarme' ) . '</a>' ),
 				'default'           => '',
 				'custom_attributes' => array(
 					'required' => 'required',
 				),
 			),
-			'encryption_key' => array(
+			'encryption_key'       => array(
 				'title'             => __( 'Pagar.me Encryption Key', 'woocommerce-pagarme' ),
 				'type'              => 'text',
+				/* translators: %1$s is replaced with Encryption key Pagar.me */
 				'description'       => sprintf( __( 'Please enter your Pagar.me Encryption key. This is needed to process the payment. Is possible get your Encryption Key in %s.', 'woocommerce-pagarme' ), '<a href="https://dashboard.pagar.me/">' . __( 'Pagar.me Dashboard > My Account page', 'woocommerce-pagarme' ) . '</a>' ),
 				'default'           => '',
 				'custom_attributes' => array(
 					'required' => 'required',
 				),
 			),
-			'checkout' => array(
+			'checkout'             => array(
 				'title'       => __( 'Checkout Pagar.me', 'woocommerce-pagarme' ),
 				'type'        => 'checkbox',
 				'label'       => __( 'Enable checkout Pagar.me', 'woocommerce-pagarme' ),
@@ -134,7 +136,7 @@ class WC_Pagarme_Credit_Card_Gateway extends WC_Payment_Gateway {
 				'desc_tip'    => true,
 				'description' => __( "When enabled opens a Pagar.me modal window to receive the customer's credit card information.", 'woocommerce-pagarme' ),
 			),
-			'refused_order' => array(
+			'refused_order'        => array(
 				'title'       => __( 'Refused Transactions Order', 'woocommerce-pagarme' ),
 				'type'        => 'checkbox',
 				'label'       => __( 'Create order for refused transactions', 'woocommerce-pagarme' ),
@@ -142,12 +144,12 @@ class WC_Pagarme_Credit_Card_Gateway extends WC_Payment_Gateway {
 				'desc_tip'    => true,
 				'description' => __( 'Creates order for refused transactions when Pagar.me Checkout is enabled' ),
 			),
-			'installments' => array(
+			'installments'         => array(
 				'title'       => __( 'Installments', 'woocommerce-pagarme' ),
 				'type'        => 'title',
 				'description' => '',
 			),
-			'max_installment' => array(
+			'max_installment'      => array(
 				'title'       => __( 'Number of Installment', 'woocommerce-pagarme' ),
 				'type'        => 'select',
 				'class'       => 'wc-enhanced-select',
@@ -176,14 +178,14 @@ class WC_Pagarme_Credit_Card_Gateway extends WC_Payment_Gateway {
 				'desc_tip'    => true,
 				'default'     => '5',
 			),
-			'interest_rate' => array(
+			'interest_rate'        => array(
 				'title'       => __( 'Interest rate', 'woocommerce-pagarme' ),
 				'type'        => 'text',
 				'description' => __( 'Please enter with the interest rate amount. Note: use 0 to not charge interest.', 'woocommerce-pagarme' ),
 				'desc_tip'    => true,
 				'default'     => '0',
 			),
-			'free_installments' => array(
+			'free_installments'    => array(
 				'title'       => __( 'Free Installments', 'woocommerce-pagarme' ),
 				'type'        => 'select',
 				'class'       => 'wc-enhanced-select',
@@ -206,16 +208,17 @@ class WC_Pagarme_Credit_Card_Gateway extends WC_Payment_Gateway {
 					'12' => '12',
 				),
 			),
-			'testing' => array(
+			'testing'              => array(
 				'title'       => __( 'Gateway Testing', 'woocommerce-pagarme' ),
 				'type'        => 'title',
 				'description' => '',
 			),
-			'debug' => array(
+			'debug'                => array(
 				'title'       => __( 'Debug Log', 'woocommerce-pagarme' ),
 				'type'        => 'checkbox',
 				'label'       => __( 'Enable logging', 'woocommerce-pagarme' ),
 				'default'     => 'no',
+				/* translators: %1$s is replaced with url logs events */
 				'description' => sprintf( __( 'Log Pagar.me events, such as API requests. You can check the log in %s', 'woocommerce-pagarme' ), '<a href="' . esc_url( admin_url( 'admin.php?page=wc-status&tab=logs&log_file=' . esc_attr( $this->id ) . '-' . sanitize_file_name( wp_hash( $this->id ) ) . '.log' ) ) . '">' . __( 'System Status &gt; Logs', 'woocommerce-pagarme' ) . '</a>' ),
 			),
 		);
@@ -272,7 +275,7 @@ class WC_Pagarme_Credit_Card_Gateway extends WC_Payment_Gateway {
 	 * Payment fields.
 	 */
 	public function payment_fields() {
-		if ( $description = $this->get_description() ) {
+		if ( $description === $this->get_description() ) {
 			echo wp_kses_post( wpautop( wptexturize( $description ) ) );
 		}
 

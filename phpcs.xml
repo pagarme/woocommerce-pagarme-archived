@@ -22,4 +22,20 @@
 	<rule ref="WordPress.Security.EscapeOutput">
 		<exclude-pattern>bin/bash.php</exclude-pattern>
 	</rule>
+
+	<rule ref="WordPress.Security.NonceVerification">
+		<exclude-pattern>includes/class-wc-pagarme-api.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.WP.EnqueuedResourceParameters.MissingVersion">
+		<exclude-pattern>includes/class-wc-pagarme-credit-card-gateway.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.WP.EnqueuedResourceParameters.NotInFooter">
+		<exclude-pattern>includes/class-wc-pagarme-credit-card-gateway.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.PHP.DevelopmentFunctions">
+		<exclude-pattern>includes/class-wc-pagarme-api.php</exclude-pattern>
+	</rule>
 </ruleset>
