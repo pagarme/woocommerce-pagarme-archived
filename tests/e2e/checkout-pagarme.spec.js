@@ -67,7 +67,7 @@ context('Checkout Pagarme', () => {
         metadata: { order_number: orderId }
       }
 
-      cy.log('Wait process transaction in Pagar.me')
+      cy.log('Wait process transaction on Pagar.me')
       cy.wait(5000)
 
       cy.task('pagarmejs:transaction', opts)
@@ -97,6 +97,11 @@ context('Checkout Pagarme', () => {
         .then((response) => {
           expect(response.status).to.eq(200)
         })
+    })
+
+    it('should validate the new status of the order', () => {
+      cy.visit(`http://woopagarme/minha-conta/view-order/${orderId}/`)
+      cy.contains('atualmente está Malsucedido')
     })
   })
 })
