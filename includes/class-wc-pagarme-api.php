@@ -322,6 +322,8 @@ class WC_Pagarme_API {
 				$data['card_hash']      = $posted['pagarme_card_hash'];
 			}
 
+			$data['capture'] = ! ( 'yes' == $this->gateway->authorize_only );
+
 			$is_checkout_pagarme = isset( $this->gateway->checkout ) && 'yes' === $this->gateway->checkout;
 			$has_installment_data = ! empty( $posted['pagarme_installments'] ) && isset( $posted['pagarme_installments'] );
 

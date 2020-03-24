@@ -77,6 +77,7 @@ if ( ! class_exists( 'WC_Pagarme' ) ) :
 		private function includes() {
 			include_once dirname( __FILE__ ) . '/includes/class-wc-pagarme-api.php';
 			include_once dirname( __FILE__ ) . '/includes/class-wc-pagarme-my-account.php';
+			include_once dirname( __FILE__ ) . '/includes/class-wc-pagarme-admin-order.php';
 			include_once dirname( __FILE__ ) . '/includes/class-wc-pagarme-banking-ticket-gateway.php';
 			include_once dirname( __FILE__ ) . '/includes/class-wc-pagarme-credit-card-gateway.php';
 		}

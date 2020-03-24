@@ -39,6 +39,7 @@ class WC_Pagarme_Credit_Card_Gateway extends WC_Payment_Gateway {
 		$this->api_key                = $this->get_option( 'api_key' );
 		$this->encryption_key         = $this->get_option( 'encryption_key' );
 		$this->checkout               = $this->get_option( 'checkout' );
+		$this->authorize_only         = $this->get_option( 'authorize_only' );
 		$this->register_refused_order = $this->get_option( 'register_refused_order' );
 		$this->max_installment        = $this->get_option( 'max_installment' );
 		$this->smallest_installment   = $this->get_option( 'smallest_installment' );
@@ -125,6 +126,36 @@ class WC_Pagarme_Credit_Card_Gateway extends WC_Payment_Gateway {
 				'custom_attributes' => array(
 					'required' => 'required',
 				),
+			),
+						'max_installment' => array(
+				'title'       => __( 'Number of Installment', 'woocommerce-pagarme' ),
+				'type'        => 'select',
+				'class'       => 'wc-enhanced-select',
+				'default'     => '12',
+				'description' => __( 'Maximum number of installments possible with payments by credit card.', 'woocommerce-pagarme' ),
+				'desc_tip'    => true,
+				'options'     => array(
+					'1'  => '1',
+					'2'  => '2',
+					'3'  => '3',
+					'4'  => '4',
+					'5'  => '5',
+					'6'  => '6',
+					'7'  => '7',
+					'8'  => '8',
+					'9'  => '9',
+					'10' => '10',
+					'11' => '11',
+					'12' => '12',
+				),
+			),
+			'authorize_only' => array(
+				'title'       => __( 'Authorize Only', 'woocommerce-pagarme' ),
+				'type'        => 'checkbox',
+				'label'       => __( 'Only authorize transactions', 'woocommerce-pagarme' ),
+				'default'     => 'no',
+				'desc_tip'    => true,
+				'description' => __( 'Only authorize transactions, you must capture it later.', 'woocommerce-pagarme' ),
 			),
 			'checkout' => array(
 				'title'       => __( 'Checkout Pagar.me', 'woocommerce-pagarme' ),
